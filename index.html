@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jamie — Portfolio</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0f0f11;
+      --surface: #1a1a1f;
+      --border: #2a2a32;
+      --accent: #7c6aff;
+      --accent-glow: rgba(124, 106, 255, 0.25);
+      --text: #e8e8f0;
+      --muted: #888899;
+      --card-hover: #22222a;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── Header ── */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.1rem 2.5rem;
+      background: rgba(15, 15, 17, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .logo {
+      font-size: 1.35rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .logo span { color: var(--accent); }
+
+    nav { display: flex; gap: 2rem; }
+
+    nav a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    nav a:hover { color: var(--text); }
+
+    /* ── Hero ── */
+    .hero {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 7rem 2rem 4rem;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: var(--accent-glow);
+      color: var(--accent);
+      border: 1px solid rgba(124, 106, 255, 0.4);
+      border-radius: 999px;
+      padding: 0.3rem 1rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.8rem, 7vw, 5rem);
+      font-weight: 800;
+      letter-spacing: -2px;
+      line-height: 1.1;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero h1 .name { color: var(--accent); }
+
+    .hero p {
+      font-size: 1.1rem;
+      color: var(--muted);
+      max-width: 520px;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
+
+    .btn {
+      display: inline-block;
+      padding: 0.75rem 1.75rem;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.2s;
+      border: none;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+      box-shadow: 0 0 24px var(--accent-glow);
+    }
+
+    .btn-primary:hover {
+      background: #6a57f0;
+      box-shadow: 0 0 36px var(--accent-glow);
+      transform: translateY(-1px);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateY(-1px);
+    }
+
+    /* ── Cards Section ── */
+    .section-label {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.6rem;
+    }
+
+    .section-title {
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin-bottom: 0.75rem;
+    }
+
+    .section-sub {
+      color: var(--muted);
+      font-size: 1rem;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    .projects {
+      padding: 5rem 2rem 7rem;
+      max-width: 1100px;
+      margin: 0 auto;
+      width: 100%;
+      text-align: center;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 2rem;
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      transition: background 0.2s, border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+      cursor: default;
+    }
+
+    .card:hover {
+      background: var(--card-hover);
+      border-color: var(--accent);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 32px var(--accent-glow);
+    }
+
+    .card-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      background: var(--accent-glow);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+    }
+
+    .card-tag {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: var(--accent-glow);
+      border-radius: 999px;
+      padding: 0.2rem 0.65rem;
+      margin-bottom: 0.25rem;
+      width: fit-content;
+    }
+
+    .card h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: -0.3px;
+    }
+
+    .card p {
+      color: var(--muted);
+      font-size: 0.9rem;
+      line-height: 1.65;
+      flex: 1;
+    }
+
+    .card-link {
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      transition: gap 0.2s;
+    }
+
+    .card-link:hover { gap: 0.55rem; }
+
+    /* ── Footer ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .footer-name {
+      font-weight: 700;
+      font-size: 0.95rem;
+      letter-spacing: -0.3px;
+    }
+
+    .footer-name span { color: var(--accent); }
+
+    .footer-copy { color: var(--muted); font-size: 0.83rem; }
+
+    .footer-links { display: flex; gap: 1.5rem; }
+
+    .footer-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--accent); }
+
+    /* ── Responsive ── */
+    @media (max-width: 600px) {
+      header { padding: 1rem 1.25rem; }
+      nav { gap: 1.25rem; }
+      footer { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <a class="logo" href="#">Jamie<span>.</span></a>
+    <nav>
+      <a href="#projects">Work</a>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-badge">Open to opportunities</div>
+    <h1>Hi, I'm <span class="name">Jamie</span>.<br>I build things for the web.</h1>
+    <p>Designer, developer, and creator focused on crafting clean, purposeful digital experiences.</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="#projects">View My Work</a>
+      <a class="btn btn-ghost" href="#">Get In Touch</a>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section class="projects" id="projects">
+    <p class="section-label">Featured Work</p>
+    <h2 class="section-title">Things I've built</h2>
+    <p class="section-sub">A selection of projects I've worked on — more coming soon.</p>
+
+    <div class="cards">
+
+      <div class="card">
+        <div class="card-icon">🚀</div>
+        <span class="card-tag">Web App</span>
+        <h3>Project One</h3>
+        <p>A placeholder for your first featured project. Describe what it does, the problem it solves, and the technologies used.</p>
+        <a class="card-link" href="#">View project →</a>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">🎨</div>
+        <span class="card-tag">Design</span>
+        <h3>Project Two</h3>
+        <p>A placeholder for your second featured project. Highlight key outcomes, your role, or an interesting technical challenge you tackled.</p>
+        <a class="card-link" href="#">View project →</a>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">⚡</div>
+        <span class="card-tag">Tool</span>
+        <h1>live server</h1>
+        <h3>Project Three</h3>
+        <p>A placeholder for your third featured project. Share what makes this one unique, or link to a live demo or GitHub repository.</p>
+        <a class="card-link" href="#">View project →</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div>
+      <p class="footer-name">Jamie<span>.</span></p>
+      <p class="footer-copy">&copy; 2026 — All rights reserved.</p>
+    </div>
+    <div class="footer-links">
+      <a href="#">GitHub</a>
+      <a href="#">LinkedIn</a>
+      <a href="#">Twitter</a>
+    </div>
+  </footer>
+
+</body>
+</html>
