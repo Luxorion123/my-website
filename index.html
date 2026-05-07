@@ -39,7 +39,7 @@
       align-items: center;
       justify-content: space-between;
       padding: 1.1rem 2.5rem;
-      background: rgba(15, 15, 17, 0.85);
+      background: rgba(10, 22, 40, 0.92);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
     }
@@ -288,6 +288,77 @@
 
     .footer-links a:hover { color: var(--accent); }
 
+    /* ── Contact ── */
+    .contact {
+      padding: 5rem 2rem 7rem;
+      max-width: 600px;
+      margin: 0 auto;
+      width: 100%;
+      text-align: center;
+    }
+
+    .contact-form {
+      margin-top: 3rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      text-align: left;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .form-group label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--muted);
+      letter-spacing: 0.03em;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.75rem 1rem;
+      color: var(--text);
+      font-family: inherit;
+      font-size: 0.95rem;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      outline: none;
+      width: 100%;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px var(--accent-glow);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 140px;
+    }
+
+    .form-submit {
+      align-self: flex-start;
+    }
+
+    .form-feedback {
+      display: none;
+      background: var(--accent-glow);
+      border: 1px solid rgba(124, 106, 255, 0.4);
+      border-radius: 8px;
+      padding: 0.85rem 1.25rem;
+      color: var(--accent);
+      font-size: 0.9rem;
+      font-weight: 500;
+      text-align: center;
+    }
+
     /* ── Responsive ── */
     @media (max-width: 600px) {
       header { padding: 1rem 1.25rem; }
@@ -304,7 +375,7 @@
     <nav>
       <a href="#projects">Work</a>
       <a href="#">About</a>
-      <a href="#">Contact</a>
+      <a href="#contact">Contact</a>
     </nav>
   </header>
 
@@ -315,7 +386,7 @@
     <p>Designer, developer, and creator focused on crafting clean, purposeful digital experiences.</p>
     <div class="hero-actions">
       <a class="btn btn-primary" href="#projects">View My Work</a>
-      <a class="btn btn-ghost" href="#">Get In Touch</a>
+      <a class="btn btn-ghost" href="#contact">Get In Touch</a>
     </div>
   </section>
 
@@ -354,6 +425,39 @@
 
     </div>
   </section>
+
+  <!-- Contact -->
+  <section class="contact" id="contact">
+    <p class="section-label">Get In Touch</p>
+    <h2 class="section-title">Contact me</h2>
+    <p class="section-sub">Have a project in mind or just want to say hi? Fill out the form and I'll get back to you.</p>
+
+    <form class="contact-form" id="contactForm" novalidate>
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" placeholder="Your name" required />
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="you@example.com" required />
+      </div>
+      <div class="form-group">
+        <label for="message">Message</label>
+        <textarea id="message" name="message" placeholder="What's on your mind?" required></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary form-submit">Send message</button>
+      <div class="form-feedback" id="formFeedback">Thanks! Your message has been sent.</div>
+    </form>
+  </section>
+
+  <script>
+    document.getElementById('contactForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const feedback = document.getElementById('formFeedback');
+      feedback.style.display = 'block';
+      this.reset();
+    });
+  </script>
 
   <!-- Footer -->
   <footer>
