@@ -3,7 +3,8 @@
     "allow": [
       "Bash(git add *)",
       "Bash(git commit *)",
-      "PowerShell(Get-ChildItem \"C:\\\\Users\\\\jamie\\\\my-website\" | Where-Object { $_.Name -notlike \".claude\" -and $_.Name -notlike \".vscode\" } | Select-Object Name, Length, LastWriteTime | Format-Table -AutoSize)"
+      "PowerShell(Get-ChildItem \"C:\\\\Users\\\\jamie\\\\my-website\" | Where-Object { $_.Name -notlike \".claude\" -and $_.Name -notlike \".vscode\" } | Select-Object Name, Length, LastWriteTime | Format-Table -AutoSize)",
+      "Bash(git push *)"
     ]
   }
 }
