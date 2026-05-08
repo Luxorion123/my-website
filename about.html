@@ -13,6 +13,18 @@
 </head>
 <body>
 
+  <!-- ── Promo Bar ── -->
+  <div class="promo-bar" id="promoBar">
+    <div class="promo-inner">
+      <span class="promo-pulse"></span>
+      <p class="promo-msg" id="promoMsg">
+        <strong>Free Consultation</strong> — no obligation, no pressure. We reply within 24 hours.
+        <a href="contact.html">Get in touch →</a>
+      </p>
+      <button class="promo-close" id="promoClose" aria-label="Dismiss banner">&times;</button>
+    </div>
+  </div>
+
   <!-- ── Navigation ── -->
   <header class="site-header">
     <div class="nav-inner">
@@ -49,13 +61,13 @@
     <section class="section about-story">
       <div class="container">
         <div class="about-grid">
-          <div class="about-image fade-in">
+          <div class="about-image slide-left">
             <img
               src="https://picsum.photos/seed/luxorion-story/680/480"
               alt="The Luxorion studio workspace in Buckley, North Wales"
             />
           </div>
-          <div class="about-text fade-in">
+          <div class="about-text slide-right">
             <span class="eyebrow">Our Story</span>
             <h2>Built from a passion for the web</h2>
             <p>Luxorion started with a simple belief: every local business deserves a professional online presence that works as hard as they do. Founded in Buckley, Flintshire, we've spent years refining our craft and building websites that don't just look great — they deliver real results.</p>
@@ -75,7 +87,7 @@
           <p>We're more than just web developers. We're a strategic partner invested in the growth of your business.</p>
         </div>
 
-        <div class="why-us-grid">
+        <div class="why-us-grid stagger-children">
           <article class="why-card fade-in">
             <div class="why-icon" aria-hidden="true">
               <i class="fas fa-heart"></i>
@@ -128,7 +140,7 @@
           <p>A small, dedicated team of designers and developers who take real pride in the work they produce.</p>
         </div>
 
-        <div class="team-grid">
+        <div class="team-grid stagger-children">
           <article class="team-card fade-in">
             <img
               src="https://picsum.photos/seed/luxorion-team1/400/300"
