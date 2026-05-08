@@ -12,17 +12,17 @@
 
 /* ── Variables ── */
 :root {
-  --navy:       #f0f0f0;
-  --blue:       #f0f0f0;
-  --light:      #141414;   /* alternate dark section bg      */
-  --silver:     #666666;   /* muted/secondary text            */
-  --white:      #000000;   /* primary background — black      */
-  --text-dark:  #f0f0f0;   /* primary text — near-white       */
-  --text-body:  #999999;   /* body text — mid-gray            */
-  --blue-dark:  #dddddd;   /* button hover                   */
-  --border:     #2d2d2d;   /* borders — dark gray             */
-  --shadow-sm:  rgba(255, 255, 255, 0.04);
-  --shadow-md:  rgba(255, 255, 255, 0.08);
+  --navy:       #333333;
+  --blue:       #333333;
+  --light:      #f5f5f5;   /* off-white section backgrounds  */
+  --silver:     #888888;   /* muted/secondary text            */
+  --white:      #ffffff;   /* primary background — white      */
+  --text-dark:  #333333;   /* primary text — charcoal         */
+  --text-body:  #666666;   /* body text — mid-gray            */
+  --blue-dark:  #1a1a1a;   /* button hover                   */
+  --border:     #e0e0e0;   /* borders — light gray            */
+  --shadow-sm:  rgba(0, 0, 0, 0.05);
+  --shadow-md:  rgba(0, 0, 0, 0.10);
   --transition: 0.22s ease;
 }
 
@@ -92,9 +92,8 @@ p { color: var(--text-body); }
   border-color: var(--text-dark);
 }
 .btn-primary:hover {
-  background: #cccccc;
-  border-color: #cccccc;
-  color: #000000;
+  background: #1a1a1a;
+  border-color: #1a1a1a;
   transform: translateY(-1px);
 }
 
@@ -710,9 +709,8 @@ p { color: var(--text-body); }
 }
 
 .cta-banner .btn-primary:hover {
-  background: #cccccc;
-  border-color: #cccccc;
-  color: #000000;
+  background: #1a1a1a;
+  border-color: #1a1a1a;
 }
 
 
