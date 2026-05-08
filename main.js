@@ -92,7 +92,8 @@ if ('IntersectionObserver' in window && animatedEls.length) {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('visible');
-        observer.unobserve(entry.target);
+      } else {
+        entry.target.classList.remove('visible');
       }
     });
   }, { threshold: 0.1 });
@@ -128,8 +129,8 @@ if (counters.length && 'IntersectionObserver' in window) {
   const counterObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
+        entry.target.textContent = '0';
         animateCounter(entry.target);
-        counterObserver.unobserve(entry.target);
       }
     });
   }, { threshold: 0.5 });
@@ -166,6 +167,134 @@ if (contactForm) {
       }, 6000);
     }, 800);
   });
+}
+
+
+/* ════════════════════════════
+   MOLECULE CANVAS (Home hero)
+════════════════════════════ */
+const moleculeCanvas = document.getElementById('moleculeCanvas');
+if (moleculeCanvas) {
+  const ctx = moleculeCanvas.getContext('2d');
+  const heroSection = moleculeCanvas.parentElement;
+  const mouse = { x: -9999, y: -9999 };
+  let particles = [];
+  let W = 0, H = 0;
+  const CONNECTION_DIST = 130;
+  const MOUSE_ATTRACT_DIST = 160;
+  const MOUSE_REPEL_DIST = 90;
+
+  function resizeCanvas() {
+    W = heroSection.offsetWidth;
+    H = heroSection.offsetHeight;
+    const dpr = window.devicePixelRatio || 1;
+    moleculeCanvas.width = W * dpr;
+    moleculeCanvas.height = H * dpr;
+    moleculeCanvas.style.width = W + 'px';
+    moleculeCanvas.style.height = H + 'px';
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+    const count = Math.min(Math.floor((W * H) / 12000), 85);
+    particles = [];
+    for (let i = 0; i < count; i++) {
+      particles.push({
+        x: Math.random() * W,
+        y: Math.random() * H,
+        vx: (Math.random() - 0.5) * 0.55,
+        vy: (Math.random() - 0.5) * 0.55,
+        r: Math.random() * 2 + 1.2
+      });
+    }
+  }
+
+  heroSection.addEventListener('mousemove', (e) => {
+    const rect = heroSection.getBoundingClientRect();
+    mouse.x = e.clientX - rect.left;
+    mouse.y = e.clientY - rect.top;
+  });
+
+  heroSection.addEventListener('mouseleave', () => {
+    mouse.x = -9999;
+    mouse.y = -9999;
+  });
+
+  function drawFrame() {
+    ctx.clearRect(0, 0, W, H);
+
+    const hasMouseNearby = mouse.x > -1000;
+
+    particles.forEach(p => {
+      if (hasMouseNearby) {
+        const dx = mouse.x - p.x;
+        const dy = mouse.y - p.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < MOUSE_REPEL_DIST && dist > 0) {
+          const force = (MOUSE_REPEL_DIST - dist) / MOUSE_REPEL_DIST;
+          p.vx -= (dx / dist) * force * 0.45;
+          p.vy -= (dy / dist) * force * 0.45;
+        }
+      }
+
+      p.vx = p.vx * 0.982 + (Math.random() - 0.5) * 0.025;
+      p.vy = p.vy * 0.982 + (Math.random() - 0.5) * 0.025;
+
+      p.x += p.vx;
+      p.y += p.vy;
+
+      if (p.x < 0) p.x = W;
+      else if (p.x > W) p.x = 0;
+      if (p.y < 0) p.y = H;
+      else if (p.y > H) p.y = 0;
+
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(255,255,255,0.8)';
+      ctx.fill();
+    });
+
+    for (let i = 0; i < particles.length; i++) {
+      for (let j = i + 1; j < particles.length; j++) {
+        const dx = particles[i].x - particles[j].x;
+        const dy = particles[i].y - particles[j].y;
+        const d = Math.sqrt(dx * dx + dy * dy);
+        if (d < CONNECTION_DIST) {
+          ctx.beginPath();
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(particles[j].x, particles[j].y);
+          ctx.strokeStyle = `rgba(255,255,255,${(1 - d / CONNECTION_DIST) * 0.22})`;
+          ctx.lineWidth = 0.7;
+          ctx.stroke();
+        }
+      }
+    }
+
+    if (hasMouseNearby) {
+      particles.forEach(p => {
+        const dx = mouse.x - p.x;
+        const dy = mouse.y - p.y;
+        const d = Math.sqrt(dx * dx + dy * dy);
+        if (d < MOUSE_ATTRACT_DIST) {
+          ctx.beginPath();
+          ctx.moveTo(p.x, p.y);
+          ctx.lineTo(mouse.x, mouse.y);
+          ctx.strokeStyle = `rgba(255,255,255,${(1 - d / MOUSE_ATTRACT_DIST) * 0.5})`;
+          ctx.lineWidth = 0.7;
+          ctx.stroke();
+        }
+      });
+
+      ctx.beginPath();
+      ctx.arc(mouse.x, mouse.y, 3.5, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(255,255,255,0.55)';
+      ctx.fill();
+    }
+
+    requestAnimationFrame(drawFrame);
+  }
+
+  resizeCanvas();
+  window.addEventListener('resize', resizeCanvas);
+  drawFrame();
 }
 
 
