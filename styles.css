@@ -168,8 +168,8 @@ p { color: var(--text-body); }
   position: sticky;
   top: 0;
   z-index: 1000;
-  background: var(--white);
-  border-bottom: 1px solid var(--border);
+  background: #000;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
 }
 
 .nav-inner {
@@ -235,8 +235,8 @@ p { color: var(--text-body); }
    FOOTER
 ════════════════════════════ */
 .site-footer {
-  background: var(--white);
-  border-top: 1px solid var(--border);
+  background: #000;
+  border-top: none;
   padding: 4.5rem 0 2rem;
 }
 
@@ -327,9 +327,9 @@ p { color: var(--text-body); }
    PROMO ANNOUNCEMENT BAR
 ════════════════════════════ */
 .promo-bar {
-  background: var(--white);
-  color: var(--text-dark);
-  border-bottom: 1px solid var(--border);
+  background: #000;
+  color: rgba(255,255,255,0.75);
+  border-bottom: 1px solid rgba(255,255,255,0.07);
   padding: 0.65rem 0;
   position: relative;
   overflow: hidden;
@@ -414,9 +414,9 @@ p { color: var(--text-body); }
    STATS STRIP
 ════════════════════════════ */
 .stats-strip {
-  background: var(--white);
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
+  background: linear-gradient(to bottom, #000 0%, #000 70%, #ffffff 100%);
+  border-top: none;
+  border-bottom: none;
   padding: 2.75rem 0;
 }
 
@@ -532,7 +532,7 @@ p { color: var(--text-body); }
    HOME — HERO
 ════════════════════════════ */
 .hero {
-  background: linear-gradient(to bottom, #000000 0%, #0a0a0a 60%, #f5f5f5 90%, #ffffff 100%);
+  background: #000000;
   border-bottom: none;
   padding: 7rem 0 6rem;
   text-align: center;
@@ -664,7 +664,7 @@ p { color: var(--text-body); }
    HOME — TESTIMONIALS
 ════════════════════════════ */
 .testimonials-section {
-  background: var(--light);
+  background: #000;
 }
 
 .testimonials-grid {
@@ -720,34 +720,34 @@ p { color: var(--text-body); }
    HOME — CTA BANNER
 ════════════════════════════ */
 .cta-banner {
-  background: var(--light);
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
+  background: #000;
+  border-top: none;
+  border-bottom: none;
   padding: 5.5rem 0;
   text-align: center;
 }
 
 .cta-banner h2 {
-  color: var(--text-dark);
+  color: #fff;
   margin-bottom: 1rem;
 }
 
 .cta-banner p {
-  color: var(--text-body);
+  color: rgba(255,255,255,0.7);
   font-size: 1rem;
   max-width: 460px;
   margin: 0 auto 2rem;
 }
 
 .cta-banner .btn-primary {
-  background: var(--text-dark);
-  color: var(--white);
-  border-color: var(--text-dark);
+  background: #fff;
+  color: #000;
+  border-color: #fff;
 }
 
 .cta-banner .btn-primary:hover {
-  background: #1a1a1a;
-  border-color: #1a1a1a;
+  background: rgba(255,255,255,0.88);
+  border-color: rgba(255,255,255,0.88);
 }
 
 
@@ -755,20 +755,20 @@ p { color: var(--text-body); }
    PAGE BANNER (inner pages)
 ════════════════════════════ */
 .page-banner {
-  background: var(--white);
-  border-bottom: 1px solid var(--border);
+  background: linear-gradient(to bottom, #000 0%, #0a0a0a 60%, #f0f0f0 90%, #fff 100%);
+  border-bottom: none;
   padding: 4.5rem 0;
   text-align: center;
 }
 
 .page-banner h1 {
-  color: var(--text-dark);
+  color: #fff;
   font-size: clamp(2rem, 4vw, 2.8rem);
   margin-bottom: 0.75rem;
 }
 
 .page-banner p {
-  color: var(--text-body);
+  color: rgba(255,255,255,0.7);
   font-size: 1rem;
   max-width: 500px;
   margin: 0 auto;
@@ -784,21 +784,21 @@ p { color: var(--text-body); }
 }
 
 .breadcrumb a {
-  color: var(--silver);
+  color: rgba(255,255,255,0.45);
   text-decoration: none;
   transition: color var(--transition);
 }
 
 .breadcrumb a:hover {
-  color: var(--text-dark);
+  color: #fff;
 }
 
 .breadcrumb span {
-  color: var(--text-dark);
+  color: rgba(255,255,255,0.9);
 }
 
 .breadcrumb i {
-  color: var(--border);
+  color: rgba(255,255,255,0.2);
   font-size: 0.65rem;
 }
 
@@ -845,7 +845,7 @@ p { color: var(--text-body); }
 
 /* Why Choose Us */
 .why-us {
-  background: var(--light);
+  background: #000;
 }
 
 .why-us-grid {
@@ -1010,16 +1010,18 @@ p { color: var(--text-body); }
 }
 
 .services-cta {
-  background: var(--light);
+  background: #000;
   padding: 5.5rem 0;
   text-align: center;
 }
 
 .services-cta h2 {
+  color: #fff;
   margin-bottom: 1rem;
 }
 
 .services-cta p {
+  color: rgba(255,255,255,0.7);
   font-size: 1rem;
   max-width: 460px;
   margin: 0 auto 2rem;
@@ -1434,4 +1436,156 @@ p { color: var(--text-body); }
   .promo-msg {
     font-size: 0.78rem;
   }
+  .stat-item {
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+  .stat-item:nth-child(odd) {
+    border-right: 1px solid rgba(255,255,255,0.1);
+  }
 }
+
+
+/* ════════════════════════════
+   DARK-THEME OVERRIDES
+   Colours for elements on black / near-black backgrounds
+════════════════════════════ */
+
+/* ── Nav (dark) ── */
+.site-header .nav-logo        { color: #fff; }
+.site-header .nav-logo span   { color: #fff; }
+.site-header .nav-toggle      { color: rgba(255,255,255,0.75); }
+.nav-links a                  { color: rgba(255,255,255,0.5); }
+.nav-links a:hover,
+.nav-links a.active           { color: #fff; border-bottom-color: rgba(255,255,255,0.8); }
+
+/* ── Promo bar text ── */
+.promo-pulse                  { background: rgba(255,255,255,0.75); }
+.promo-msg                    { color: rgba(255,255,255,0.65); }
+.promo-msg strong             { color: #fff; }
+.promo-msg a                  { color: #fff; text-decoration-color: rgba(255,255,255,0.3); }
+.promo-close                  { color: rgba(255,255,255,0.3); }
+.promo-close:hover            { color: #fff; }
+
+/* ── Stats strip (dark → white gradient; numbers white) ── */
+.stats-strip .stat-number     { color: #fff; }
+.stats-strip .stat-suffix     { color: #fff; }
+.stats-strip .stat-item p     { color: rgba(255,255,255,0.45); }
+
+/* ── Testimonials section ── */
+.testimonials-section .section-header h2     { color: #fff; }
+.testimonials-section .section-header p      { color: rgba(255,255,255,0.65); }
+.testimonials-section .section-header .eyebrow { color: rgba(255,255,255,0.38); }
+.testimonials-section .testimonial-card      { background: rgba(255,255,255,0.04); border-color: rgba(255,255,255,0.1); }
+.testimonials-section .testimonial-card:hover { border-color: rgba(255,255,255,0.22); }
+.testimonials-section .testimonial-card p    { color: rgba(255,255,255,0.7); }
+.testimonials-section .testimonial-author strong { color: #fff; }
+.testimonials-section .testimonial-author span   { color: rgba(255,255,255,0.42); }
+.testimonials-section .stars                 { color: rgba(255,255,255,0.85); opacity: 1; }
+
+/* ── Why Us section ── */
+.why-us .section-header h2     { color: #fff; }
+.why-us .section-header p      { color: rgba(255,255,255,0.65); }
+.why-us .section-header .eyebrow { color: rgba(255,255,255,0.38); }
+.why-us .why-card              { background: rgba(255,255,255,0.04); border-color: rgba(255,255,255,0.1); }
+.why-us .why-card:hover        { border-color: rgba(255,255,255,0.24); box-shadow: none; }
+.why-us .why-card h3           { color: #fff; }
+.why-us .why-card p            { color: rgba(255,255,255,0.65); }
+.why-us .why-icon              { color: rgba(255,255,255,0.72); }
+
+/* ── Services CTA ── */
+.services-cta .btn-primary      { background: #fff; color: #000; border-color: #fff; }
+.services-cta .btn-primary:hover { background: rgba(255,255,255,0.88); border-color: rgba(255,255,255,0.88); }
+
+/* ── Footer ── */
+.site-footer .nav-logo          { color: #fff; }
+.site-footer .nav-logo span     { color: #fff; }
+.site-footer .footer-brand p    { color: rgba(255,255,255,0.48); }
+.site-footer .footer-col h4     { color: rgba(255,255,255,0.38); }
+.site-footer .footer-col ul li a { color: rgba(255,255,255,0.48); }
+.site-footer .footer-col ul li a:hover { color: #fff; }
+.site-footer .footer-contact-item { color: rgba(255,255,255,0.48); }
+.site-footer .footer-contact-item i { color: rgba(255,255,255,0.3); }
+.site-footer .footer-bottom     { border-top-color: rgba(255,255,255,0.08); }
+.site-footer .footer-bottom p   { color: rgba(255,255,255,0.28); }
+
+/* ── Mobile nav dropdown (dark) ── */
+@media (max-width: 768px) {
+  .nav-links {
+    background: #000;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+  .nav-links a {
+    color: rgba(255,255,255,0.55);
+    border-left: 2px solid transparent;
+  }
+  .nav-links a.active,
+  .nav-links a:hover {
+    color: #fff;
+    border-left-color: #fff;
+    border-bottom-color: transparent;
+  }
+}
+
+
+/* ════════════════════════════
+   SECTION-DARK UTILITY
+   Apply to any section that needs a full-black background with white content
+════════════════════════════ */
+.section-dark                           { background: #000; }
+.section-dark h2, .section-dark h3      { color: #fff; }
+.section-dark p                         { color: rgba(255,255,255,0.65); }
+.section-dark .eyebrow                  { color: rgba(255,255,255,0.38); }
+.section-dark .section-header p         { color: rgba(255,255,255,0.65); }
+.section-dark .service-card             { background: rgba(255,255,255,0.04); border-color: rgba(255,255,255,0.1); }
+.section-dark .service-card:hover       { border-color: rgba(255,255,255,0.26); box-shadow: 0 4px 20px rgba(255,255,255,0.03); }
+.section-dark .service-icon             { color: rgba(255,255,255,0.72); }
+.section-dark .service-link             { color: rgba(255,255,255,0.82); text-decoration-color: rgba(255,255,255,0.18); }
+.section-dark .service-link:hover       { text-decoration-color: rgba(255,255,255,0.7); }
+.section-dark .highlight-card          { background: rgba(255,255,255,0.04); border-color: rgba(255,255,255,0.1); }
+.section-dark .highlight-card:hover    { border-color: rgba(255,255,255,0.26); }
+.section-dark .highlight-icon          { color: rgba(255,255,255,0.72); }
+
+
+/* ════════════════════════════
+   PER-PAGE GRADIENT DIRECTIONS
+   Each inner page gets a unique gradient angle on its banner
+════════════════════════════ */
+body.page-about   .page-banner { background: linear-gradient(135deg, #000 0%, #0d0d0d 55%, #f0f0f0 88%, #fff 100%); }
+body.page-services .page-banner { background: linear-gradient(to right, #000 0%, #0d0d0d 55%, #f0f0f0 88%, #fff 100%); }
+body.page-gallery  .page-banner { background: linear-gradient(to left,  #000 0%, #0d0d0d 55%, #f0f0f0 88%, #fff 100%); }
+body.page-contact  .page-banner { background: linear-gradient(225deg,   #000 0%, #0d0d0d 55%, #f0f0f0 88%, #fff 100%); }
+
+
+/* ════════════════════════════
+   HOME — ABOUT SPLIT SECTION
+   Left half (image): black  |  Right half (text): off-white
+════════════════════════════ */
+.section-home-about {
+  padding: 4rem 0;
+  background: linear-gradient(to right, #000 0%, #111 42%, #f5f5f5 56%, #f5f5f5 100%);
+}
+@media (max-width: 992px) {
+  .section-home-about {
+    background: linear-gradient(to bottom, #111 0%, #f5f5f5 50%);
+  }
+}
+
+
+/* ════════════════════════════
+   GALLERY PAGE — subtle diagonal tint
+════════════════════════════ */
+body.page-gallery .gallery-section {
+  background: linear-gradient(135deg, #f4f4f4 0%, #fff 45%, #f4f4f4 100%);
+}
+
+
+/* ════════════════════════════
+   CONTACT PAGE — dark map section
+════════════════════════════ */
+body.page-contact .map-section {
+  background: #000;
+}
+body.page-contact .map-section .section-header h2  { color: #fff; }
+body.page-contact .map-section .section-header p   { color: rgba(255,255,255,0.65); }
+body.page-contact .map-section .eyebrow            { color: rgba(255,255,255,0.38); }
+body.page-contact .map-wrapper                     { border-color: rgba(255,255,255,0.1); }
