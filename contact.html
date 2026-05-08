@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us — Luxorion Web Development</title>
+  <meta name="description" content="Get in touch with Luxorion for a free, no-obligation web development quote. Based in Buckley, Flintshire, serving businesses across North Wales." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ── Navigation ── -->
+  <header class="site-header">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">Luxor<span>ion</span></a>
+      <button class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+        <i class="fas fa-bars"></i>
+      </button>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="services.html">Services</a>
+        <a href="gallery.html">Our Work</a>
+        <a href="contact.html" class="active">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ── Page Banner ── -->
+    <section class="page-banner">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="index.html">Home</a>
+          <i class="fas fa-chevron-right" aria-hidden="true"></i>
+          <span>Contact</span>
+        </nav>
+        <h1>Get In Touch</h1>
+        <p>Have a project in mind? We'd love to hear about it. Fill in the form and we'll get back to you within one business day.</p>
+      </div>
+    </section>
+
+    <!-- ── Contact Section ── -->
+    <section class="section contact-section">
+      <div class="container">
+        <div class="contact-grid">
+
+          <!-- Contact Form -->
+          <div class="contact-form-wrap fade-in">
+            <h3>Send us a message</h3>
+            <p>Tell us about your project and what you're looking for — the more detail, the better we can help.</p>
+
+            <form class="contact-form" id="contactForm" novalidate>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="firstName">First Name <span style="color: var(--blue);">*</span></label>
+                  <input
+                    type="text"
+                    id="firstName"
+                    name="firstName"
+                    placeholder="e.g. Sarah"
+                    required
+                    autocomplete="given-name"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="lastName">Last Name <span style="color: var(--blue);">*</span></label>
+                  <input
+                    type="text"
+                    id="lastName"
+                    name="lastName"
+                    placeholder="e.g. Mitchell"
+                    required
+                    autocomplete="family-name"
+                  />
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="email">Email Address <span style="color: var(--blue);">*</span></label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="you@example.com"
+                    required
+                    autocomplete="email"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="phone">Phone Number</label>
+                  <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    placeholder="e.g. 07700 000 000"
+                    autocomplete="tel"
+                  />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="businessName">Business Name</label>
+                <input
+                  type="text"
+                  id="businessName"
+                  name="businessName"
+                  placeholder="Your business or trading name"
+                  autocomplete="organization"
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="service">Service You're Interested In</label>
+                <select id="service" name="service">
+                  <option value="" disabled selected>Select a service…</option>
+                  <option value="website-design">Website Design &amp; Development</option>
+                  <option value="ecommerce">E-Commerce Website</option>
+                  <option value="seo">SEO Optimisation</option>
+                  <option value="maintenance">Website Maintenance &amp; Support</option>
+                  <option value="landing-page">Landing Page Design</option>
+                  <option value="redesign">Website Redesign &amp; Refresh</option>
+                  <option value="other">Not Sure / Something Else</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="message">Your Message <span style="color: var(--blue);">*</span></label>
+                <textarea
+                  id="message"
+                  name="message"
+                  placeholder="Tell us about your project — what you're looking for, any key requirements, and your ideal timeline."
+                  required
+                ></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-primary" style="align-self: flex-start;">
+                Send Message
+              </button>
+
+              <div class="form-feedback" id="formFeedback" role="alert">
+                <i class="fas fa-check-circle" aria-hidden="true"></i>
+                &nbsp; Thank you! We've received your message and will be in touch within one business day.
+              </div>
+
+            </form>
+          </div>
+
+          <!-- Contact Info Sidebar -->
+          <aside class="contact-info-wrap fade-in">
+            <h3>Contact details</h3>
+            <p>Prefer to reach us directly? Here are all the ways to get in touch.</p>
+
+            <div class="contact-info-items">
+              <div class="contact-info-item">
+                <div class="contact-info-icon" aria-hidden="true">
+                  <i class="fas fa-map-marker-alt"></i>
+                </div>
+                <div>
+                  <h4>Address</h4>
+                  <p>Luxorion<br />Buckley, Flintshire<br />CH7, North Wales</p>
+                </div>
+              </div>
+
+              <div class="contact-info-item">
+                <div class="contact-info-icon" aria-hidden="true">
+                  <i class="fas fa-phone"></i>
+                </div>
+                <div>
+                  <h4>Phone</h4>
+                  <p><a href="tel:01244000000" style="color: var(--blue); font-weight: 500;">01244 000 000</a></p>
+                  <p style="font-size: 0.82rem; margin-top: 0.2rem;">Mon–Fri, 9am–5pm</p>
+                </div>
+              </div>
+
+              <div class="contact-info-item">
+                <div class="contact-info-icon" aria-hidden="true">
+                  <i class="fas fa-envelope"></i>
+                </div>
+                <div>
+                  <h4>Email</h4>
+                  <p><a href="mailto:hello@luxorion.co.uk" style="color: var(--blue); font-weight: 500;">hello@luxorion.co.uk</a></p>
+                  <p style="font-size: 0.82rem; margin-top: 0.2rem;">We reply within 1 business day</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Quick facts box -->
+            <div style="
+              background: var(--light);
+              border-radius: 12px;
+              padding: 1.5rem;
+              border-left: 4px solid var(--blue);
+            ">
+              <h4 style="margin-bottom: 0.75rem; color: var(--navy);">A few things worth knowing</h4>
+              <ul style="display: flex; flex-direction: column; gap: 0.6rem;">
+                <li style="display: flex; align-items: flex-start; gap: 0.6rem; font-size: 0.88rem; color: var(--text-body);">
+                  <i class="fas fa-check" style="color: var(--blue); margin-top: 0.2rem; flex-shrink: 0;" aria-hidden="true"></i>
+                  Free, no-obligation quote on every project
+                </li>
+                <li style="display: flex; align-items: flex-start; gap: 0.6rem; font-size: 0.88rem; color: var(--text-body);">
+                  <i class="fas fa-check" style="color: var(--blue); margin-top: 0.2rem; flex-shrink: 0;" aria-hidden="true"></i>
+                  Transparent pricing — no hidden fees
+                </li>
+                <li style="display: flex; align-items: flex-start; gap: 0.6rem; font-size: 0.88rem; color: var(--text-body);">
+                  <i class="fas fa-check" style="color: var(--blue); margin-top: 0.2rem; flex-shrink: 0;" aria-hidden="true"></i>
+                  Work with businesses of all sizes
+                </li>
+                <li style="display: flex; align-items: flex-start; gap: 0.6rem; font-size: 0.88rem; color: var(--text-body);">
+                  <i class="fas fa-check" style="color: var(--blue); margin-top: 0.2rem; flex-shrink: 0;" aria-hidden="true"></i>
+                  Based in Buckley, serving all of North Wales
+                </li>
+              </ul>
+            </div>
+          </aside>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Map Section ── -->
+    <section class="map-section">
+      <div class="container">
+        <div class="section-header fade-in" style="margin-bottom: 2rem;">
+          <span class="eyebrow">Find Us</span>
+          <h2>We're based in Buckley</h2>
+          <p>Located in the heart of Flintshire, conveniently placed for clients across North East Wales and the Chester area.</p>
+        </div>
+        <div class="map-wrapper fade-in">
+          <!-- Google Maps embed for Buckley, Flintshire -->
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d19368.45!2d-3.0885!3d53.1736!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48771dc1a93d1b5b%3A0x630f6e9b1b4e4b4e!2sBuckley%2C%20Flintshire!5e0!3m2!1sen!2suk!4v1699000000000!5m2!1sen!2suk"
+            width="100%"
+            height="420"
+            style="border: none; display: block;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Map showing Luxorion's location in Buckley, Flintshire"
+          ></iframe>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ── Footer ── -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="nav-logo">Luxor<span>ion</span></a>
+          <p>Professional web development for local businesses in Buckley and across North Wales. High-quality websites at an affordable price.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="gallery.html">Our Work</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Get In Touch</h4>
+          <p class="footer-contact-item">
+            <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+            Buckley, Flintshire, Wales
+          </p>
+          <p class="footer-contact-item">
+            <i class="fas fa-phone" aria-hidden="true"></i>
+            01244 000 000
+          </p>
+          <p class="footer-contact-item">
+            <i class="fas fa-envelope" aria-hidden="true"></i>
+            hello@luxorion.co.uk
+          </p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Luxorion. All rights reserved.</p>
+        <p>Designed &amp; built in Buckley, Wales</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>

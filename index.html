@@ -3,474 +3,221 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Jamie — Portfolio</title>
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --bg: #0f0f11;
-      --surface: #1a1a1f;
-      --border: #2a2a32;
-      --accent: #7c6aff;
-      --accent-glow: rgba(124, 106, 255, 0.25);
-      --text: #e8e8f0;
-      --muted: #888899;
-      --card-hover: #22222a;
-    }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-      line-height: 1.6;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-
-    /* ── Header ── */
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1.1rem 2.5rem;
-      background: rgba(10, 22, 40, 0.92);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .logo {
-      font-size: 1.35rem;
-      font-weight: 700;
-      letter-spacing: -0.5px;
-      color: var(--text);
-      text-decoration: none;
-    }
-
-    .logo span { color: var(--accent); }
-
-    nav { display: flex; gap: 2rem; }
-
-    nav a {
-      color: var(--muted);
-      text-decoration: none;
-      font-size: 0.9rem;
-      font-weight: 500;
-      transition: color 0.2s;
-    }
-
-    nav a:hover { color: var(--text); }
-
-    /* ── Hero ── */
-    .hero {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      padding: 7rem 2rem 4rem;
-    }
-
-    .hero-badge {
-      display: inline-block;
-      background: var(--accent-glow);
-      color: var(--accent);
-      border: 1px solid rgba(124, 106, 255, 0.4);
-      border-radius: 999px;
-      padding: 0.3rem 1rem;
-      font-size: 0.8rem;
-      font-weight: 600;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      margin-bottom: 1.5rem;
-    }
-
-    .hero h1 {
-      font-size: clamp(2.8rem, 7vw, 5rem);
-      font-weight: 800;
-      letter-spacing: -2px;
-      line-height: 1.1;
-      margin-bottom: 1.25rem;
-    }
-
-    .hero h1 .name { color: var(--accent); }
-
-    .hero p {
-      font-size: 1.1rem;
-      color: var(--muted);
-      max-width: 520px;
-      margin-bottom: 2.5rem;
-    }
-
-    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
-
-    .btn {
-      display: inline-block;
-      padding: 0.75rem 1.75rem;
-      border-radius: 8px;
-      font-size: 0.95rem;
-      font-weight: 600;
-      text-decoration: none;
-      cursor: pointer;
-      transition: all 0.2s;
-      border: none;
-    }
-
-    .btn-primary {
-      background: var(--accent);
-      color: #fff;
-      box-shadow: 0 0 24px var(--accent-glow);
-    }
-
-    .btn-primary:hover {
-      background: #6a57f0;
-      box-shadow: 0 0 36px var(--accent-glow);
-      transform: translateY(-1px);
-    }
-
-    .btn-ghost {
-      background: transparent;
-      color: var(--text);
-      border: 1px solid var(--border);
-    }
-
-    .btn-ghost:hover {
-      border-color: var(--accent);
-      color: var(--accent);
-      transform: translateY(-1px);
-    }
-
-    /* ── Cards Section ── */
-    .section-label {
-      font-size: 0.78rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 0.6rem;
-    }
-
-    .section-title {
-      font-size: clamp(1.6rem, 3vw, 2.2rem);
-      font-weight: 700;
-      letter-spacing: -0.5px;
-      margin-bottom: 0.75rem;
-    }
-
-    .section-sub {
-      color: var(--muted);
-      font-size: 1rem;
-      max-width: 480px;
-      margin: 0 auto;
-    }
-
-    .projects {
-      padding: 5rem 2rem 7rem;
-      max-width: 1100px;
-      margin: 0 auto;
-      width: 100%;
-      text-align: center;
-    }
-
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
-      margin-top: 3rem;
-    }
-
-    .card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 2rem;
-      text-align: left;
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      transition: background 0.2s, border-color 0.2s, transform 0.2s, box-shadow 0.2s;
-      cursor: default;
-    }
-
-    .card:hover {
-      background: var(--card-hover);
-      border-color: var(--accent);
-      transform: translateY(-4px);
-      box-shadow: 0 8px 32px var(--accent-glow);
-    }
-
-    .card-icon {
-      width: 44px;
-      height: 44px;
-      border-radius: 10px;
-      background: var(--accent-glow);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.3rem;
-    }
-
-    .card-tag {
-      display: inline-block;
-      font-size: 0.72rem;
-      font-weight: 600;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--accent);
-      background: var(--accent-glow);
-      border-radius: 999px;
-      padding: 0.2rem 0.65rem;
-      margin-bottom: 0.25rem;
-      width: fit-content;
-    }
-
-    .card h3 {
-      font-size: 1.1rem;
-      font-weight: 700;
-      letter-spacing: -0.3px;
-    }
-
-    .card p {
-      color: var(--muted);
-      font-size: 0.9rem;
-      line-height: 1.65;
-      flex: 1;
-    }
-
-    .card-link {
-      color: var(--accent);
-      text-decoration: none;
-      font-size: 0.88rem;
-      font-weight: 600;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.3rem;
-      transition: gap 0.2s;
-    }
-
-    .card-link:hover { gap: 0.55rem; }
-
-    /* ── Footer ── */
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 2rem 2.5rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-
-    .footer-name {
-      font-weight: 700;
-      font-size: 0.95rem;
-      letter-spacing: -0.3px;
-    }
-
-    .footer-name span { color: var(--accent); }
-
-    .footer-copy { color: var(--muted); font-size: 0.83rem; }
-
-    .footer-links { display: flex; gap: 1.5rem; }
-
-    .footer-links a {
-      color: var(--muted);
-      text-decoration: none;
-      font-size: 0.85rem;
-      font-weight: 500;
-      transition: color 0.2s;
-    }
-
-    .footer-links a:hover { color: var(--accent); }
-
-    /* ── Contact ── */
-    .contact {
-      padding: 5rem 2rem 7rem;
-      max-width: 600px;
-      margin: 0 auto;
-      width: 100%;
-      text-align: center;
-    }
-
-    .contact-form {
-      margin-top: 3rem;
-      display: flex;
-      flex-direction: column;
-      gap: 1.25rem;
-      text-align: left;
-    }
-
-    .form-group {
-      display: flex;
-      flex-direction: column;
-      gap: 0.4rem;
-    }
-
-    .form-group label {
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: var(--muted);
-      letter-spacing: 0.03em;
-    }
-
-    .form-group input,
-    .form-group textarea {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 0.75rem 1rem;
-      color: var(--text);
-      font-family: inherit;
-      font-size: 0.95rem;
-      transition: border-color 0.2s, box-shadow 0.2s;
-      outline: none;
-      width: 100%;
-    }
-
-    .form-group input:focus,
-    .form-group textarea:focus {
-      border-color: var(--accent);
-      box-shadow: 0 0 0 3px var(--accent-glow);
-    }
-
-    .form-group textarea {
-      resize: vertical;
-      min-height: 140px;
-    }
-
-    .form-submit {
-      align-self: flex-start;
-    }
-
-    .form-feedback {
-      display: none;
-      background: var(--accent-glow);
-      border: 1px solid rgba(124, 106, 255, 0.4);
-      border-radius: 8px;
-      padding: 0.85rem 1.25rem;
-      color: var(--accent);
-      font-size: 0.9rem;
-      font-weight: 500;
-      text-align: center;
-    }
-
-    /* ── Responsive ── */
-    @media (max-width: 600px) {
-      header { padding: 1rem 1.25rem; }
-      nav { gap: 1.25rem; }
-      footer { flex-direction: column; align-items: flex-start; }
-    }
-  </style>
+  <title>Luxorion — Professional Web Development in Buckley</title>
+  <meta name="description" content="Luxorion builds high-quality, affordable websites for local businesses in Buckley and North Wales. Get a free quote today." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 
-  <!-- Header -->
-  <header>
-    <a class="logo" href="#">Jamie<span>.</span></a>
-    <nav>
-      <a href="#projects">Work</a>
-      <a href="#">About</a>
-      <a href="#contact">Contact</a>
-    </nav>
+  <!-- ── Navigation ── -->
+  <header class="site-header">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">Luxor<span>ion</span></a>
+      <button class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+        <i class="fas fa-bars"></i>
+      </button>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="index.html" class="active">Home</a>
+        <a href="about.html">About</a>
+        <a href="services.html">Services</a>
+        <a href="gallery.html">Our Work</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
   </header>
 
-  <!-- Hero -->
-  <section class="hero">
-    <div class="hero-badge">Open to opportunities</div>
-    <h1>Hi, I'm <span class="name">Jamie</span>.<br>I build things for the web.</h1>
-    <p>Designer, developer, and creator focused on crafting clean, purposeful digital experiences.</p>
-    <div class="hero-actions">
-      <a class="btn btn-primary" href="#projects">View My Work</a>
-      <a class="btn btn-ghost" href="#contact">Get In Touch</a>
-    </div>
-  </section>
+  <main>
 
-  <!-- Projects -->
-  <section class="projects" id="projects">
-    <p class="section-label">Featured Work</p>
-    <h2 class="section-title">Things I've built</h2>
-    <p class="section-sub">A selection of projects I've worked on — more coming soon.</p>
+    <!-- ── Hero ── -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <span class="eyebrow">Web Development — Buckley, North Wales</span>
+          <h1>Beautiful Websites.<br>Built to Perform.</h1>
+          <p>Luxorion crafts high-quality, professional websites for businesses across Buckley and North Wales — at a price that makes sense. From concept to launch, we handle everything.</p>
+          <div class="hero-actions">
+            <a href="contact.html" class="btn btn-primary">Get a Free Quote</a>
+            <a href="services.html" class="btn btn-outline">Explore Services</a>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    <div class="cards">
+    <!-- ── Highlights ── -->
+    <section class="section highlights-section">
+      <div class="container">
+        <div class="section-header fade-in">
+          <span class="eyebrow">Why Luxorion</span>
+          <h2>Everything your business needs online</h2>
+          <p>We combine strategic thinking with clean design to deliver websites that attract customers and grow your business.</p>
+        </div>
 
-      <div class="card">
-        <div class="card-icon">🚀</div>
-        <span class="card-tag">Web App</span>
-        <h3>Project One</h3>
-        <p>A placeholder for your first featured project. Describe what it does, the problem it solves, and the technologies used.</p>
-        <a class="card-link" href="#">View project →</a>
+        <div class="highlights-grid">
+          <article class="highlight-card fade-in">
+            <div class="highlight-icon" aria-hidden="true">
+              <i class="fas fa-pencil-ruler"></i>
+            </div>
+            <h3>Bespoke Design</h3>
+            <p>Every site we build is designed from scratch, tailored to your brand and your customers — no generic templates, no cookie-cutter layouts.</p>
+          </article>
+
+          <article class="highlight-card fade-in">
+            <div class="highlight-icon" aria-hidden="true">
+              <i class="fas fa-mobile-alt"></i>
+            </div>
+            <h3>Fully Responsive</h3>
+            <p>Your site will look flawless on every device — desktop, tablet, and smartphone — so you never lose a visitor due to a poor mobile experience.</p>
+          </article>
+
+          <article class="highlight-card fade-in">
+            <div class="highlight-icon" aria-hidden="true">
+              <i class="fas fa-pound-sign"></i>
+            </div>
+            <h3>Transparent Pricing</h3>
+            <p>Premium quality doesn't have to mean premium prices. We offer clear, upfront costs with no hidden fees — just great websites at honest prices.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Brief Intro ── -->
+    <section class="section" style="background: var(--light); padding: 4rem 0;">
+      <div class="container">
+        <div class="about-grid fade-in">
+          <div class="about-image">
+            <img
+              src="https://picsum.photos/seed/luxorion-office/700/460"
+              alt="The Luxorion team working on a web design project"
+            />
+          </div>
+          <div class="about-text">
+            <span class="eyebrow">About Luxorion</span>
+            <h2>Local expertise, world-class results</h2>
+            <p>Based in Buckley, Flintshire, Luxorion is a dedicated web development studio helping local businesses make their mark online. We believe every business — regardless of size or budget — deserves a website that truly represents who they are.</p>
+            <p>Whether you're a sole trader looking for a simple brochure site, or an established business ready for a full e-commerce platform, we have the skills and experience to make it happen.</p>
+            <a href="about.html" class="btn btn-outline-navy" style="margin-top: 1.5rem;">Learn More About Us</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Testimonials ── -->
+    <section class="section testimonials-section">
+      <div class="container">
+        <div class="section-header fade-in">
+          <span class="eyebrow">Client Reviews</span>
+          <h2>Trusted by local businesses</h2>
+          <p>Don't just take our word for it — here's what some of our clients have to say.</p>
+        </div>
+
+        <div class="testimonials-grid">
+          <article class="testimonial-card fade-in">
+            <div class="stars" aria-label="5 out of 5 stars">
+              <i class="fas fa-star" aria-hidden="true"></i>
+              <i class="fas fa-star" aria-hidden="true"></i>
+              <i class="fas fa-star" aria-hidden="true"></i>
+              <i class="fas fa-star" aria-hidden="true"></i>
+              <i class="fas fa-star" aria-hidden="true"></i>
+            </div>
+            <p>"Luxorion completely transformed our online presence. Our new website looks stunning and we've already seen a noticeable increase in enquiries. Highly recommended."</p>
+            <div class="testimonial-author">
+              <strong>Sarah Mitchell</strong>
+              <span>Owner, Mitchell's Florists — Mold</span>
+            </div>
+          </article>
+
+          <article class="testimonial-card fade-in">
+            <div class="stars" aria-label="5 out of 5 stars">
+              <i class="fas fa-star" aria-hidden="true"></i>
+              <i class="fas fa-star" aria-hidden="true"></i>
+              <i class="fas fa-star" aria-hidden="true"></i>
+              <i class="fas fa-star" aria-hidden="true"></i>
+              <i class="fas fa-star" aria-hidden="true"></i>
+            </div>
+            <p>"Fast, professional, and great value. The team listened to exactly what we wanted and delivered on time. Our new site has made a real difference to how customers find us."</p>
+            <div class="testimonial-author">
+              <strong>David Parry</strong>
+              <span>Director, Parry Building Services — Buckley</span>
+            </div>
+          </article>
+
+          <article class="testimonial-card fade-in">
+            <div class="stars" aria-label="5 out of 5 stars">
+              <i class="fas fa-star" aria-hidden="true"></i>
+              <i class="fas fa-star" aria-hidden="true"></i>
+              <i class="fas fa-star" aria-hidden="true"></i>
+              <i class="fas fa-star" aria-hidden="true"></i>
+              <i class="fas fa-star" aria-hidden="true"></i>
+            </div>
+            <p>"I was worried a new website would be complicated and expensive. Luxorion made the whole process simple and the result exceeded my expectations."</p>
+            <div class="testimonial-author">
+              <strong>Emma Jones</strong>
+              <span>Owner, EJ Personal Training — Flintshire</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── CTA Banner ── -->
+    <section class="cta-banner fade-in">
+      <div class="container">
+        <h2>Ready to grow your business online?</h2>
+        <p>Get in touch today for a free, no-obligation quote. We'd love to hear about your project.</p>
+        <a href="contact.html" class="btn btn-primary">Get a Free Quote</a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ── Footer ── -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="nav-logo">Luxor<span>ion</span></a>
+          <p>Professional web development for local businesses in Buckley and across North Wales. High-quality websites at an affordable price.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="gallery.html">Our Work</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Get In Touch</h4>
+          <p class="footer-contact-item">
+            <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+            Buckley, Flintshire, Wales
+          </p>
+          <p class="footer-contact-item">
+            <i class="fas fa-phone" aria-hidden="true"></i>
+            01244 000 000
+          </p>
+          <p class="footer-contact-item">
+            <i class="fas fa-envelope" aria-hidden="true"></i>
+            hello@luxorion.co.uk
+          </p>
+        </div>
       </div>
 
-      <div class="card">
-        <div class="card-icon">🎨</div>
-        <span class="card-tag">Design</span>
-        <h3>Project Two</h3>
-        <p>A placeholder for your second featured project. Highlight key outcomes, your role, or an interesting technical challenge you tackled.</p>
-        <a class="card-link" href="#">View project →</a>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Luxorion. All rights reserved.</p>
+        <p>Designed &amp; built in Buckley, Wales</p>
       </div>
-
-      <div class="card">
-        <div class="card-icon">⚡</div>
-        <span class="card-tag">Tool</span>
-        <h1>live server</h1>
-        <h3>Project Three</h3>
-        <p>A placeholder for your third featured project. Share what makes this one unique, or link to a live demo or GitHub repository.</p>
-        <a class="card-link" href="#">View project →</a>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- Contact -->
-  <section class="contact" id="contact">
-    <p class="section-label">Get In Touch</p>
-    <h2 class="section-title">Contact me</h2>
-    <p class="section-sub">Have a project in mind or just want to say hi? Fill out the form and I'll get back to you.</p>
-
-    <form class="contact-form" id="contactForm" novalidate>
-      <div class="form-group">
-        <label for="name">Name</label>
-        <input type="text" id="name" name="name" placeholder="Your name" required />
-      </div>
-      <div class="form-group">
-        <label for="email">Email</label>
-        <input type="email" id="email" name="email" placeholder="you@example.com" required />
-      </div>
-      <div class="form-group">
-        <label for="message">Message</label>
-        <textarea id="message" name="message" placeholder="What's on your mind?" required></textarea>
-      </div>
-      <button type="submit" class="btn btn-primary form-submit">Send message</button>
-      <div class="form-feedback" id="formFeedback">Thanks! Your message has been sent.</div>
-    </form>
-  </section>
-
-  <script>
-    document.getElementById('contactForm').addEventListener('submit', function (e) {
-      e.preventDefault();
-      const feedback = document.getElementById('formFeedback');
-      feedback.style.display = 'block';
-      this.reset();
-    });
-  </script>
-
-  <!-- Footer -->
-  <footer>
-    <div>
-      <p class="footer-name">Jamie<span>.</span></p>
-      <p class="footer-copy">&copy; 2026 — All rights reserved.</p>
-    </div>
-    <div class="footer-links">
-      <a href="#">GitHub</a>
-      <a href="#">LinkedIn</a>
-      <a href="#">Twitter</a>
     </div>
   </footer>
 
+  <script src="main.js"></script>
 </body>
 </html>
